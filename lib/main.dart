@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './transaction.dart';
 
 void main() => runApp(const MyApp());
@@ -22,13 +23,13 @@ class MyHomePage extends StatelessWidget {
     Transaction(
       id: 't1',
       title: 'Laptop',
-      amount: 50000,
+      amount: 11.6,
       date: DateTime.now(),
     ),
     Transaction(
       id: 't2',
       title: 'Mobile',
-      amount: 30000,
+      amount: 10.1,
       date: DateTime.now(),
     ),
   ];
@@ -57,14 +58,42 @@ class MyHomePage extends StatelessWidget {
                     child: Row(
                   children: <Widget>[
                     Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 15,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.purple,
+                          width: 2,
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        tx.amount.toString(),
+                        '\$${tx.amount}',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 19,
+                          color: Colors.purple,
+                        ),
                       ),
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(tx.title),
-                        Text(tx.date.toString()),
+                        Text(
+                          tx.title,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          DateFormat('dd/MM/yyyy').format(tx.date),
+                          style: const TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
                       ],
                     )
                   ],
