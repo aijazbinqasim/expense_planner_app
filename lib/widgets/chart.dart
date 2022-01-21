@@ -22,7 +22,7 @@ class Chart extends StatelessWidget {
       }
 
       return {
-        'day': DateFormat.E().format(daysAgo).substring(0, 2),
+        'day': DateFormat.E().format(daysAgo).substring(0, 1),
         'amount': totalAmount,
       };
     }).reversed.toList();
