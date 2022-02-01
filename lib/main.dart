@@ -60,7 +60,8 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState
+    extends State<MyHomePage> /*with WidgetsBindingObserver*/ {
   final List<Transaction> _transactions = [];
 
   List<Transaction> get _recentTransactions {
@@ -74,6 +75,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   var _showChart = false;
+
+  // @override
+  // void initState() {
+  //   WidgetsBinding.instance?.addObserver(this);
+  //   super.initState();
+  // }
+
+  // @override
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   print(state);
+  //   super.didChangeAppLifecycleState(state);
+  // }
+
+  // @override
+  // void dispose() {
+  //   WidgetsBinding.instance?.removeObserver(this);
+  //   super.dispose();
+  // }
 
   void _addNewTransactionHandler(String title, double amount, DateTime date) {
     final transaction = Transaction(
